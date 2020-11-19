@@ -8,6 +8,10 @@ const app = express();
 app.use(formidable());
 app.use(cors());
 
+app.get("/", async (req, res) => {
+  res.status(200).json(response.data);
+});
+
 const charactersRoute = require("./routes/characters");
 app.use(charactersRoute);
 
