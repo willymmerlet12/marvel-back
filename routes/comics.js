@@ -9,7 +9,7 @@ const timestamp = date.getTime() / 1000;
 const ts = Math.floor(timestamp);
 
 // Creation of Hash using Ts, private Marvel key and public Marvel key
-const publicMarvelKey = "64498682b973ea81107a3d18b89aa258";
+const publicMarvelKey = "74c399ef61aa9b282e01be055c605add";
 const hash = md5(ts + process.env.MARVEL_PRIV_KEY + publicMarvelKey).toString();
 
 router.get("/comics", async (req, res) => {
