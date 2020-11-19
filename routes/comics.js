@@ -42,4 +42,16 @@ router.get("/character/:id/comics", async (req, res) => {
   }
 });
 
+router.get("/comics/:id", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://gateway.marvel.com/v1/public/comics/${req.params.id}?ts=${ts}&apikey=${publicMarvelKey}&hash=${hash}`
+    );
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+});
 module.exports = router;
