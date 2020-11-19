@@ -8,10 +8,10 @@ const date = new Date();
 const timestamp = date.getTime() / 1000;
 const ts = Math.floor(timestamp);
 
-const marvelPublicKey = "49641a6feedff43b9eca11fbef7bd958";
+const marvelPublicKey = "74c399ef61aa9b282e01be055c605add";
 const hash = md5(ts + process.env.MARVEL_PRIV_KEY + marvelPublicKey).toString();
 
-router.get("/", async (req, res) => {
+router.get("/character", async (req, res) => {
   try {
     const response = await axios.get(
       `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${marvelPublicKey}&hash=${hash}&limit=100`
