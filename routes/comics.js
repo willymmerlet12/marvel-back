@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const md5 = require("md5");
+const md5 = require("(md5");
 const axios = require("axios");
 
 // Creation of TS
@@ -10,9 +10,7 @@ const ts = Math.floor(timestamp);
 
 // Creation of Hash using Ts, private Marvel key and public Marvel key
 const publicMarvelKey = "64498682b973ea81107a3d18b89aa258";
-const hash = md5(
-  ts + process.env.MARVEL_PRIVATE_KEY + publicMarvelKey
-).toString();
+const hash = md5(ts + process.env.MARVEL_PRIV_KEY + publicMarvelKey).toString();
 
 router.get("/comics", async (req, res) => {
   try {
