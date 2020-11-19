@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const md5 = require("(md5");
+const md5 = require("md5");
 const axios = require("axios");
 
 // Creation of TS
@@ -19,6 +19,20 @@ router.get("/comics", async (req, res) => {
     );
 
     console.log(response.data);
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+});
+
+router.get("/character/:id/comics", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://gateway.marvel.com/v1/public/characters/${req.params.id}/comics?ts=${ts}&apikey=${publicMarvelKey}&hash=${hash}`
+    );
 
     res.status(200).json(response.data);
   } catch (error) {

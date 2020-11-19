@@ -14,6 +14,8 @@ app.get("/", async (req, res) => {
 
 const charactersRoute = require("./routes/characters");
 app.use(charactersRoute);
+const comicsRoute = require("./routes/comics");
+app.use(comicsRoute);
 
 app.all("*", (req, res) => {
   res.status(404).json({
