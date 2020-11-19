@@ -1,0 +1,22 @@
+require("dotenv").config();
+const express = require("express");
+const formidable = require("express-formidable");
+const cors = require("cors");
+const mongoose = require("mongoose");
+
+const app = express();
+app.use(formidable());
+app.use(cors());
+
+const charactersRoute = require("./routes/characters");
+app.use(charactersRoute);
+
+app.all("*", (req, res) => {
+  res.status(404).json({
+    message: "Route not found",
+  });
+});
+
+app.listen("3100", (req, res) => {
+  console.log("server has started");
+});
