@@ -27,7 +27,7 @@ router.get("/character", async (req, res) => {
 router.get("/character/:id", async (req, res) => {
   try {
     const response = await axios.get(
-      `https:gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${ts}&apikey=${marvelPublicKey}&hash=${hash}`
+      `https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${ts}&apikey=${marvelPublicKey}&hash=${hash}`
     );
     res.status(200).json(response.data);
   } catch (error) {
