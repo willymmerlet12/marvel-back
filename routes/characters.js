@@ -12,18 +12,12 @@ const marvelPublicKey = "74c399ef61aa9b282e01be055c605add";
 const hash = md5(ts + process.env.MARVEL_PRIV_KEY + marvelPublicKey).toString();
 
 router.get("/character", async (req, res) => {
-  let search;
-
   const { name, page } = req.query;
   let offset = page * 100 - 100;
-  if (name !== "") {
-    search = `&startingwith=${name}`;
-  }
 
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters?orderBy=name&ts=${ts}&apikey=${marvelPublicKey}&hash=${hash}&limit=100&offset=${offset}` +
-        search
+      `https://gateway.marvel.com/v1/public/characters?orderBy=name&ts=${ts}&apikey=${marvelPublicKey}&hash=${hash}&limit=100&offset=${offset}`
     );
 
     console.log(response.data);
